@@ -50,8 +50,11 @@ Thumbs.db
 
 *.png
 *.ppm
+*.pbm
 *.jpg
 
 *.URL
+
+testFiles/
 
 .vscode

@@ -1,0 +1,75 @@
+var canvas = document.getElementById('mycanvas');
+var ctx = canvas.getContext('2d');
+
+width = 1685 
+height = 882
+
+
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, width, height);
+
+
+
+function point(x, y,  color='black',s=2){
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, s, s);
+}
+
+vect = [
+
+]
+
+// for (i = 0; i < vect.length; i++){
+//     point (getx(i), gety(i));
+// }
+
+prev = 0;
+for (i = 0; i < vect.length; i++){
+    if (vect[i] != vect[i-1]+1){
+        point (getx(i), gety(i),'black');;
+    }
+}
+
+prevb = 0;
+for (i = vect.length-1; i >=0; i--){
+    if (vect[i] != vect[i + 1] - 1){
+        point (getx(i), gety(i),'black');
+    }
+}
+
+k = 1;
+check = 0;
+
+for (i = 0; i < vect.length; i++){
+check = 0; 
+    for (k = 1; k < width; k++){//(getx(i)-width) <= getx(i-k)
+        if(getx(i) == getx(i + k)){
+            check = 1;
+        }
+    }
+
+    if (check == 0){
+        point (getx(i), gety(i),'black');
+    }
+}
+
+for (i = vect.length; i >= 0; i--){
+    check = 0; 
+        for (k = 1; k < width; k++){//(getx(i)-width) <= getx(i-k)
+            if(getx(i) == getx(i - k)){
+                check = 1;
+            }
+        }
+    
+        if (check == 0){
+            point (getx(i), gety(i));
+        }
+    }
+
+function getx(i){
+    return (vect[i] % width);
+}
+
+function gety(i){
+    return (vect[i] / width);
+}
